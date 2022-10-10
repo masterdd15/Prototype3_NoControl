@@ -33,7 +33,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - MaterialTexture:
-        m_Texture: {fileID: 2800000, guid: 872e39aa5768cb24bb1705c6ef40b752, type: 3}
+        m_Texture: {fileID: 2800000, guid: 22219ca634da1b842b916fb9d7aec6a0, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - RaindropsText:
@@ -103,10 +103,10 @@ Material:
     m_Ints: []
     m_Floats:
     - DistortionPower: 1
-    - DistortionScale: 5.96
-    - NormalPower: 30.4
+    - DistortionScale: 3.2
+    - NormalPower: 0.2
     - RainSpeed: 0.55
-    - Smoothness_Control: 0
+    - Smoothness_Control: 0.58
     - _AlphaClip: 0
     - _Blend: 0
     - _BumpScale: 1
@@ -134,7 +134,8 @@ Material:
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
-    - RainTextureTiling: {r: 1, g: 1, b: 0, a: 0}
+    - MainText_Tiling: {r: 1, g: 1, b: 0, a: 0}
+    - RainTextureTiling: {r: 5, g: 5, b: 0, a: 0}
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
