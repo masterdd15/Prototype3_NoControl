@@ -25,7 +25,7 @@ public class AudioPlayer : MonoBehaviour
     {
         myAudio = GetComponent<AudioSource>();
         StartCoroutine(PlayIntro());
-        timer = 50f;
+        timer = 20f;
         isCounting = false;
         timerObject.SetActive(false);
     }
@@ -33,6 +33,10 @@ public class AudioPlayer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(timer < 10f)
+        {
+            ResetTimer();
+        }
         if (isCounting)
         {
             StartCountdown();
@@ -55,5 +59,11 @@ public class AudioPlayer : MonoBehaviour
         timerObject.SetActive(true);
         timer -= Time.deltaTime;
         timerText.text = timer.ToString();
+    }
+
+    public void ResetTimer()
+    {
+        float newTime = Random.Range(20f, 100f);
+        timer = newTime;
     }
 }
