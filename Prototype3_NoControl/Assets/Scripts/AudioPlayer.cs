@@ -10,6 +10,9 @@ public class AudioPlayer : MonoBehaviour
 
     public AudioClip introClip;
     public AudioClip startTimer;
+    public AudioClip waitLonger;
+
+    public GameObject backgroundMusic;
 
     //This is were our timer is set
     public float timer;
@@ -18,7 +21,15 @@ public class AudioPlayer : MonoBehaviour
 
     //Bools to track our states
     private bool isCounting;
+    private bool isReseting;
 
+    //We need the value of the timer to keep increasing
+    float highValue;
+    float stopTimer;
+
+    //The Two Cameras
+    public GameObject camera1;
+    public GameObject camera2;
     
     // Start is called before the first frame update
     void Start()
@@ -26,8 +37,11 @@ public class AudioPlayer : MonoBehaviour
         myAudio = GetComponent<AudioSource>();
         StartCoroutine(PlayIntro());
         timer = 20f;
+        highValue = 100f;
+        stopTimer = 10f;
         isCounting = false;
         timerObject.SetActive(false);
+        backgroundMusic.SetActive(false);
     }
 
     // Update is called once per frame
@@ -35,7 +49,7 @@ public class AudioPlayer : MonoBehaviour
     {
         if(timer < 10f)
         {
-            ResetTimer();
+            StartCoroutine(ResetTimer());
         }
         if (isCounting)
         {
@@ -57,13 +71,38 @@ public class AudioPlayer : MonoBehaviour
     public void StartCountdown()
     {
         timerObject.SetActive(true);
+        if (isReseting)
+        {
+            backgroundMusic.SetActive(false);
+        }
+        else
+        {
+            backgroundMusic.SetActive(true);
+        }
         timer -= Time.deltaTime;
         timerText.text = timer.ToString();
     }
 
-    public void ResetTimer()
+    IEnumerator ResetTimer()
     {
-        float newTime = Random.Range(20f, 100f);
+        isReseting = true;
+        myAudio.clip = waitLonger;
+        myAudio.Play();
+        float newTime = Random.Range(30f, highValue);
         timer = newTime;
+        yield return new WaitForSeconds(myAudio.clip.length);
+        if(camera1.activeSelf) //We need to turn on camera 2
+        {
+            camera1.SetActive(false);
+            camera2.SetActive(true);
+        }
+        else
+        {
+            camera1.SetActive(true);
+            camera2.SetActive(false);
+        }
+        highValue = highValue * 2;
+        stopTimer = Random.Range(2f, 10f);
+        isReseting = false;
     }
 }

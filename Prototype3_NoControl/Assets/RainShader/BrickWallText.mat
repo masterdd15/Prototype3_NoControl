@@ -86,8 +86,8 @@ Material:
     m_Ints: []
     m_Floats:
     - DistortionPower: 1
-    - DistortionScale: 10
-    - NormalPower: 1
+    - DistortionScale: 7.54
+    - NormalPower: 30.61
     - RainSpeed: 1
     - Smoothness_Control: 1
     - _AlphaClip: 0

@@ -104,7 +104,7 @@ Material:
     m_Floats:
     - DistortionPower: 1
     - DistortionScale: 3.2
-    - NormalPower: 0.2
+    - NormalPower: 2.03
     - RainSpeed: 0.55
     - Smoothness_Control: 0.58
     - _AlphaClip: 0
